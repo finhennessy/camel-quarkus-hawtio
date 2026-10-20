@@ -34,6 +34,17 @@
         <jolokia.clientPrincipal.1>cn=hawtio-online.hawtio.svc</jolokia.clientPrincipal.1>
         <jolokia.extendedClientCheck>true</jolokia.extendedClientCheck>
         <jolokia.discoveryEnabled>false</jolokia.discoveryEnabled>
+
+        <jkube.skip.push>false</jkube.skip.push>
+        <jkube.build.switchToDeployment>true</jkube.build.switchToDeployment>
+        <quarkus.smallrye-health.root-path>/observe/health</quarkus.smallrye-health.root-path>
+        <jkube.maven.plugin>openshift-maven-plugin</jkube.maven.plugin>
+        <jkube.container-image.from>mirror.gcr.io/library/eclipse-temurin:21</jkube.container-image.from>
+        <jkube.container-image.name>ask-chuck:1.0-SNAPSHOT</jkube.container-image.name>
+        <jkube.build.strategy>docker</jkube.build.strategy>
+        <jkube.enricher.jkube-healthcheck-quarkus.port>9876</jkube.enricher.jkube-healthcheck-quarkus.port>
+        <jkube.image.name>ask-chuck:1.0-SNAPSHOT</jkube.image.name>
+        <jkube.version>1.19.0</jkube.version>           
     </properties>
 
 
@@ -138,6 +149,11 @@
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.eclipse.jkube</groupId>
+                <artifactId>openshift-maven-plugin</artifactId>
+                <version>${jkube.version}</version>
+            </plugin>  
         </plugins>
         <resources>
             <resource>
